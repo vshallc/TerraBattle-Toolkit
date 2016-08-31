@@ -1,0 +1,8 @@
+/[Bb]mp/
+/[Tt]est/
+
+.DS_Store
+
+*.tmp
+
+
