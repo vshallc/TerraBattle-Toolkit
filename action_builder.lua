@@ -1,5 +1,9 @@
+-- Terra Battle AutoTouch Utilities (compatible with TouchElf) --
+-- -- Author: Xiaoxi Wang (Terra Battle ID: NyanNyanNyan) --
+
 local mesh_ret = require "mesh_builder"
 -- local mesh = mesh_ret.mesh
+-- local mesh_size = mesh_ret.mesh_size
 local mesh2coords = mesh_ret.mesh2coords
 local meshshot = mesh_ret.meshshot
 
