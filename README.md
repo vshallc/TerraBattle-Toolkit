@@ -4,7 +4,7 @@ For Terra Battle game
 
 This is originally developed for [AutoTouch](https://autotouch.net/) and compatible with [TouchElf](http://www.touchelf.com/) (See below)
 
-**I am testing this only on my iPhone5 and there are still many issues, so unfortunately it is likely NOT working on your device...**
+**I am testing this only on my iPhone5 and there are still many issues, so unfortunately it is likely NOT working on your device... (Please try to edit some values in action_builder.lua to make it work)**
 
 # Basic Usage:
 require tb-utils at the first line
