@@ -1,9 +1,9 @@
 -- Terra Battle AutoTouch Utilities (compatible with TouchElf) --
--- -- Author: Xiaoxi Wang (Terra Battle ID: NyanNyanNyan) --
+-- -- Author: Xiaoxi Wang -- --
 
 local mesh_ret = require "mesh_builder"
 -- local mesh = mesh_ret.mesh
--- local mesh_size = mesh_ret.mesh_size
+local mesh_size = mesh_ret.mesh_size
 local mesh2coords = mesh_ret.mesh2coords
 local meshshot = mesh_ret.meshshot
 
@@ -11,7 +11,7 @@ local acts = {}
 
 --
 -- speed 6px/ms
-local SPEED = 60
+local SPEED = mesh_size / 3.999
 local SHORT_SLEEP_TIME = 5000      -- 0.010s
 local MEDIUM_SLEEP_TIME = 50000     -- 0.050s
 local LONG_SLEEP_TIME = 1000000     -- 1.000s

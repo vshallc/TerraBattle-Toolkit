@@ -1,5 +1,5 @@
 -- Terra Battle AutoTouch Utilities (compatible with TouchElf) --
--- Author: Xiaoxi Wang (Terra Battle ID: NyanNyanNyan) --
+-- Author: Xiaoxi Wang -- --
 
 
 local floor = math.floor
@@ -39,9 +39,8 @@ local mesh = { x = {{true, true, true, true, true, true},
 
 if hw_rate >= 1.80 then
     -- alert("This phone is tall!")
-    mesh_size = floor((width - 2) / 6)
-    -- local offset_height = mesh_size / 2
-    mesh_ox = (width - mesh_size * 6) / 2
+    mesh_size = (width - 2) / 6  -- 1px for left & right margin
+    mesh_ox = width  / 2 - mesh_size * 3
     mesh_oy = height / 2 - mesh_size * 3.5
     for row = 1, 8 do
         for col = 1, 6 do
@@ -49,27 +48,7 @@ if hw_rate >= 1.80 then
             mesh['y'][row][col] = mesh_oy + (row - 0.5) * mesh_size
         end
     end
-    --[[ Demo
-    for row = 1, 8 do
-        for col = 1, 6 do
-            touchDown(9, mesh[row][col][1]-5, mesh[row][col][2]-5)
-            usleep(10000)
-            touchMove(9, mesh[row][col][1]-5, mesh[row][col][2]-5)
-            usleep(10000)
-            touchMove(9, mesh[row][col][1]+5, mesh[row][col][2]-5)
-            usleep(10000)
-            touchMove(9, mesh[row][col][1]+5, mesh[row][col][2]+5)
-            usleep(10000)
-            touchMove(9, mesh[row][col][1]-5, mesh[row][col][2]+5)
-            usleep(10000)
-            touchMove(9, mesh[row][col][1]-5, mesh[row][col][2]-5)
-            usleep(10000)
-            touchUp(9, mesh[row][col][1]-5, mesh[row][col][2]-5)
-            usleep(50000)
-        end
-    end
-    --]]
-    --[[
+    --[[ DEBUG
     log(string.format("width: %f\nheight: %f\nmesh size: %f\nupperleft: (%f, %f)\nupperright: (%f, %f)\nlowerleft: (%f, %f)\nlowerright: (%f, %f)", 
         width,
         height,
@@ -81,9 +60,9 @@ if hw_rate >= 1.80 then
     --]]
 else
     -- alert("This phone is stout!")
-    game_width = floor((height - 3) / 1.8)
-    mesh_size = floor(game_width / 6)
-    mesh_ox = width / 2 - mesh_size * 3
+    game_width = height / 1.8
+    mesh_size = (game_width - 2) / 6
+    mesh_ox = width  / 2 - mesh_size * 3
     mesh_oy = height / 2 - mesh_size * 3.5
     for row = 1, 8 do
         for col = 1, 6 do
@@ -93,7 +72,7 @@ else
     end
 end
 
--- save buttons coordinates
+-- save buttons coordinates (will be added in future)
 
 
 -- scripts
@@ -111,6 +90,7 @@ local function meshshot(filePath, row, col)
     screenshot(filePath, {x1, y1, mesh_size, mesh_size})
 end
 
+ret.mesh_size = mesh_size
 ret.mesh = mesh
 ret.mesh2coords = mesh2coords
 ret.meshshot = meshshot
