@@ -39,8 +39,9 @@ local mesh = { x = {{true, true, true, true, true, true},
 
 if hw_rate >= 1.80 then
     -- alert("This phone is tall!")
-    mesh_size = (width - 2) / 6  -- 1px for left & right margin
-    mesh_ox = width  / 2 - mesh_size * 3
+    mesh_size = (width - 2) / 6
+    -- local offset_height = mesh_size / 2
+    mesh_ox = (width - mesh_size * 6) / 2
     mesh_oy = height / 2 - mesh_size * 3.5
     for row = 1, 8 do
         for col = 1, 6 do

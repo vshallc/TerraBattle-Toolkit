@@ -8,8 +8,8 @@ local acts = {}
 --
 -- speed 6px/ms
 local SPEED = 3
-local SHORT_SLEEP_TIME = 10000      -- 0.010s
-local MEDIUM_SLEEP_TIME = 40000     -- 0.040s
+local SHORT_SLEEP_TIME = 9000      -- 0.010s
+local MEDIUM_SLEEP_TIME = 40000     -- 0.050s
 local LONG_SLEEP_TIME = 1000000     -- 1.000s
 --[[
 local SHORT_SLEEP_TIME = 200000     -- 0.20s
@@ -24,7 +24,6 @@ local abs = math.abs
 
 local sx, sy
 
---[[
 local function meshTo2(r, c)
     local nx, ny = mesh2coords(r, c)
     local dx = nx - sx
@@ -44,13 +43,13 @@ local function meshTo2(r, c)
     touchMove(FINGER_ID, sx, sy)
     usleep(SHORT_SLEEP_TIME*40)
 end
-]]--
+
 local function tap(r, c)
     sx, sy = mesh2coords(r, c)
     touchDown(FINGER_ID, sx, sy)
     usleep(MEDIUM_SLEEP_TIME)
     touchUp(FINGER_ID, sx, sy)
-    usleep(SHORT_SLEEP_TIME)
+    usleep(MEDIUM_SLEEP_TIME)
 end
 
 local function meshDown(r, c)
@@ -100,7 +99,7 @@ local function roll(r, c, ...)
             --meshTo(last_r + step_r * i, last_c + step_c * i)
         end
         last_r, last_c = stops[i], stops[i+1]
-        --]]
+        ]]--
     end
     meshUp()
 end
