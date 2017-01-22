@@ -1,5 +1,8 @@
+/[Bb]ak/
 /[Bb]mp/
 /[Tt]est/
+/[Pp]rivate/
+/[Ss]cripts/
 
 .DS_Store
 

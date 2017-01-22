@@ -1,9 +1,5 @@
--- Terra Battle AutoTouch Utilities (compatible with TouchElf) --
--- -- Author: Xiaoxi Wang (Terra Battle ID: NyanNyanNyan) --
-
 local mesh_ret = require "mesh_builder"
 -- local mesh = mesh_ret.mesh
--- local mesh_size = mesh_ret.mesh_size
 local mesh2coords = mesh_ret.mesh2coords
 local meshshot = mesh_ret.meshshot
 
@@ -11,9 +7,9 @@ local acts = {}
 
 --
 -- speed 6px/ms
-local SPEED = 60
-local SHORT_SLEEP_TIME = 5000      -- 0.010s
-local MEDIUM_SLEEP_TIME = 50000     -- 0.050s
+local SPEED = 3
+local SHORT_SLEEP_TIME = 10000      -- 0.010s
+local MEDIUM_SLEEP_TIME = 40000     -- 0.040s
 local LONG_SLEEP_TIME = 1000000     -- 1.000s
 --[[
 local SHORT_SLEEP_TIME = 200000     -- 0.20s
@@ -28,7 +24,8 @@ local abs = math.abs
 
 local sx, sy
 
-local function meshTo(r, c)
+--[[
+local function meshTo2(r, c)
     local nx, ny = mesh2coords(r, c)
     local dx = nx - sx
     local dy = ny - sy
@@ -45,9 +42,9 @@ local function meshTo(r, c)
     end
     sx, sy = nx, ny
     touchMove(FINGER_ID, sx, sy)
-    usleep(SHORT_SLEEP_TIME)
+    usleep(SHORT_SLEEP_TIME*40)
 end
-
+]]--
 local function tap(r, c)
     sx, sy = mesh2coords(r, c)
     touchDown(FINGER_ID, sx, sy)
@@ -67,13 +64,13 @@ local function meshUp()
     usleep(MEDIUM_SLEEP_TIME)
 end
 
---[[
+
 local function meshTo(r, c)
     sx, sy = mesh2coords(r, c)
     touchMove(FINGER_ID, sx, sy)
     usleep(SHORT_SLEEP_TIME)
 end
-]]--
+
 
 local function roll(r, c, ...)
     local stops = {...}
@@ -103,7 +100,7 @@ local function roll(r, c, ...)
             --meshTo(last_r + step_r * i, last_c + step_c * i)
         end
         last_r, last_c = stops[i], stops[i+1]
-        ]]--
+        --]]
     end
     meshUp()
 end
